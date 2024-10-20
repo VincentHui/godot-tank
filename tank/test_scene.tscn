@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://2605urtcqvfd"]
+
+[ext_resource type="Script" path="res://TankControls.cs" id="1_8j8f5"]
+[ext_resource type="Texture2D" uid="uid://cdqmha6yf8jge" path="res://icon.svg" id="1_d7jxk"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(174, 194)
+texture = ExtResource("1_d7jxk")
+script = ExtResource("1_8j8f5")
