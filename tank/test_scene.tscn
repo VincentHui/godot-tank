@@ -5,7 +5,14 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="tankSprite" type="Sprite2D" parent="."]
 position = Vector2(174, 194)
 texture = ExtResource("1_d7jxk")
 script = ExtResource("1_8j8f5")
+
+[node name="cannon" type="Sprite2D" parent="tankSprite"]
+
+[node name="cannonTexture" type="Sprite2D" parent="tankSprite/cannon"]
+position = Vector2(0, -40)
+scale = Vector2(0.3, 1)
+texture = ExtResource("1_d7jxk")
