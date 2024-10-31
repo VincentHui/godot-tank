@@ -2,9 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cdqmha6yf8jge" path="res://icon.svg" id="1_d7jxk"]
 [ext_resource type="Script" path="res://character.cs" id="3_aamv6"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4au3k"]
-size = Vector2(11.1305, 22.9254)
+[ext_resource type="PackedScene" uid="uid://upy7sxhanknb" path="res://bullet.tscn" id="3_pbabw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ofv5"]
 size = Vector2(105, 110)
@@ -30,6 +28,7 @@ texture = ExtResource("1_d7jxk")
 position = Vector2(175, 194)
 motion_mode = 1
 script = ExtResource("3_aamv6")
+bulletPath = ExtResource("3_pbabw")
 
 [node name="cannon" type="Sprite2D" parent="CharacterBody2D2"]
 
@@ -46,19 +45,6 @@ texture = ExtResource("1_d7jxk")
 [node name="Marker2D" type="Marker2D" parent="CharacterBody2D2/cannon/cannonTexture"]
 position = Vector2(-0.927551, -184.358)
 scale = Vector2(1.85507, 1.91045)
-
-[node name="Bullet" type="CharacterBody2D" parent="CharacterBody2D2/cannon/cannonTexture"]
-visible = false
-
-[node name="BulletCollide" type="CollisionShape2D" parent="CharacterBody2D2/cannon/cannonTexture/Bullet"]
-z_index = 1
-position = Vector2(-0.927643, -203.463)
-shape = SubResource("RectangleShape2D_4au3k")
-
-[node name="BulletSprite" type="Sprite2D" parent="CharacterBody2D2/cannon/cannonTexture/Bullet"]
-position = Vector2(-0.927536, -203.463)
-scale = Vector2(0.108696, 0.216418)
-texture = ExtResource("1_d7jxk")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D2"]
 z_index = -1
