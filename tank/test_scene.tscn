@@ -1,18 +1,114 @@
-[gd_scene load_steps=3 format=3 uid="uid://2605urtcqvfd"]
+[gd_scene load_steps=6 format=3 uid="uid://2605urtcqvfd"]
 
-[ext_resource type="Script" path="res://TankControls.cs" id="1_8j8f5"]
 [ext_resource type="Texture2D" uid="uid://cdqmha6yf8jge" path="res://icon.svg" id="1_d7jxk"]
+[ext_resource type="Script" path="res://character.cs" id="3_aamv6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4au3k"]
+size = Vector2(11.1305, 22.9254)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ofv5"]
+size = Vector2(105, 110)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ricv8"]
+size = Vector2(72, 398)
 
 [node name="Node2D" type="Node2D"]
 
 [node name="tankSprite" type="Sprite2D" parent="."]
-position = Vector2(174, 194)
+visible = false
+position = Vector2(175, 194)
 texture = ExtResource("1_d7jxk")
-script = ExtResource("1_8j8f5")
 
 [node name="cannon" type="Sprite2D" parent="tankSprite"]
 
 [node name="cannonTexture" type="Sprite2D" parent="tankSprite/cannon"]
 position = Vector2(0, -40)
 scale = Vector2(0.3, 1)
+texture = ExtResource("1_d7jxk")
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+position = Vector2(175, 194)
+motion_mode = 1
+script = ExtResource("3_aamv6")
+
+[node name="cannon" type="Sprite2D" parent="CharacterBody2D2"]
+
+[node name="cannonTexture" type="Sprite2D" parent="CharacterBody2D2/cannon"]
+position = Vector2(0.499994, 0.500002)
+scale = Vector2(0.539062, 0.523438)
+texture = ExtResource("1_d7jxk")
+
+[node name="cannonTexture" type="Sprite2D" parent="CharacterBody2D2/cannon/cannonTexture"]
+position = Vector2(-1.78761, -78.2687)
+scale = Vector2(0.39025, 1.59795)
+texture = ExtResource("1_d7jxk")
+
+[node name="Marker2D" type="Marker2D" parent="CharacterBody2D2/cannon/cannonTexture"]
+position = Vector2(-0.927551, -184.358)
+scale = Vector2(1.85507, 1.91045)
+
+[node name="Bullet" type="CharacterBody2D" parent="CharacterBody2D2/cannon/cannonTexture"]
+visible = false
+
+[node name="BulletCollide" type="CollisionShape2D" parent="CharacterBody2D2/cannon/cannonTexture/Bullet"]
+z_index = 1
+position = Vector2(-0.927643, -203.463)
+shape = SubResource("RectangleShape2D_4au3k")
+
+[node name="BulletSprite" type="Sprite2D" parent="CharacterBody2D2/cannon/cannonTexture/Bullet"]
+position = Vector2(-0.927536, -203.463)
+scale = Vector2(0.108696, 0.216418)
+texture = ExtResource("1_d7jxk")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D2"]
+z_index = -1
+texture = ExtResource("1_d7jxk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+position = Vector2(-1.5, -1)
+shape = SubResource("RectangleShape2D_7ofv5")
+
+[node name="collisions" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisions"]
+position = Vector2(879, 451)
+shape = SubResource("RectangleShape2D_ricv8")
+
+[node name="Sprite2D" type="Sprite2D" parent="collisions/CollisionShape2D"]
+z_index = -1
+position = Vector2(1.50002, 0.500008)
+scale = Vector2(0.679687, 3.33594)
+texture = ExtResource("1_d7jxk")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions"]
+polygon = PackedVector2Array(657, 3, 1156, -1, 1154, 650, -2, 652, -1, 4, 666, 0, 675, -20, -15, -24, -28, 22, -31, 674, 1196, 666, 1191, -29, 663, -22)
+
+[node name="Sprite2D2" type="Sprite2D" parent="collisions/CollisionPolygon2D"]
+z_index = -1
+position = Vector2(-9.7168, 333.5)
+scale = Vector2(0.20755, 5.32031)
+texture = ExtResource("1_d7jxk")
+
+[node name="Sprite2D" type="Sprite2D" parent="collisions/CollisionPolygon2D"]
+z_index = -1
+position = Vector2(1171.22, 327.389)
+scale = Vector2(0.309113, 5.3533)
+texture = ExtResource("1_d7jxk")
+
+[node name="Sprite2D2" type="Sprite2D" parent="collisions/CollisionPolygon2D/Sprite2D"]
+z_index = -1
+position = Vector2(-820.791, -62.9777)
+scale = Vector2(13.2183, 0.0459705)
+texture = ExtResource("1_d7jxk")
+
+[node name="Sprite2D" type="Sprite2D" parent="collisions/CollisionPolygon2D/Sprite2D/Sprite2D2"]
+z_index = -1
+position = Vector2(-143.786, -1.0159)
+scale = Vector2(1.33078, -0.754344)
+texture = ExtResource("1_d7jxk")
+
+[node name="Sprite2D" type="Sprite2D" parent="collisions/CollisionPolygon2D/Sprite2D"]
+z_index = -1
+position = Vector2(-1886.75, 63.8132)
+scale = Vector2(30.531, 0.0350248)
 texture = ExtResource("1_d7jxk")
