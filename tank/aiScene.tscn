@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://t7dp765du1lh"]
+[gd_scene load_steps=7 format=3 uid="uid://t7dp765du1lh"]
 
 [ext_resource type="Texture2D" uid="uid://cdqmha6yf8jge" path="res://icon.svg" id="1_ube8u"]
+[ext_resource type="Script" path="res://AiSimplePatrol.cs" id="2_dyd8f"]
 [ext_resource type="Script" path="res://character.cs" id="2_f8p4x"]
 [ext_resource type="PackedScene" uid="uid://upy7sxhanknb" path="res://bullet.tscn" id="3_6hp4l"]
 
@@ -12,13 +13,14 @@ size = Vector2(72, 398)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="tankSprite" type="Sprite2D" parent="."]
+[node name="aiTank" type="Sprite2D" parent="."]
 position = Vector2(175, 482)
 texture = ExtResource("1_ube8u")
+script = ExtResource("2_dyd8f")
 
-[node name="cannon" type="Sprite2D" parent="tankSprite"]
+[node name="cannon" type="Sprite2D" parent="aiTank"]
 
-[node name="cannonTexture" type="Sprite2D" parent="tankSprite/cannon"]
+[node name="cannonTexture" type="Sprite2D" parent="aiTank/cannon"]
 position = Vector2(0, -40)
 scale = Vector2(0.3, 1)
 texture = ExtResource("1_ube8u")
