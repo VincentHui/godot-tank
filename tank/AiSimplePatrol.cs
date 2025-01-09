@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class AiSimplePatrol : Sprite2D
+public partial class AiSimplePatrol : Node2D
 {
   private float speed = 10f;
 

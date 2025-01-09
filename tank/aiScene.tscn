@@ -13,17 +13,22 @@ size = Vector2(72, 398)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="aiTank" type="Sprite2D" parent="."]
-position = Vector2(175, 482)
-texture = ExtResource("1_ube8u")
+[node name="AiCharacter" type="CharacterBody2D" parent="."]
+position = Vector2(175.16, 421.99)
 script = ExtResource("2_dyd8f")
 
-[node name="cannon" type="Sprite2D" parent="aiTank"]
+[node name="aiTank" type="Sprite2D" parent="AiCharacter"]
+texture = ExtResource("1_ube8u")
 
-[node name="cannonTexture" type="Sprite2D" parent="aiTank/cannon"]
+[node name="cannon" type="Sprite2D" parent="AiCharacter/aiTank"]
+
+[node name="cannonTexture" type="Sprite2D" parent="AiCharacter/aiTank/cannon"]
 position = Vector2(0, -40)
 scale = Vector2(0.3, 1)
 texture = ExtResource("1_ube8u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AiCharacter"]
+shape = SubResource("RectangleShape2D_7ofv5")
 
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
 position = Vector2(175, 194)
