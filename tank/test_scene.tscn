@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://2605urtcqvfd"]
+[gd_scene load_steps=4 format=3 uid="uid://2605urtcqvfd"]
 
 [ext_resource type="Script" path="res://TankControls.cs" id="1_8j8f5"]
 [ext_resource type="Texture2D" uid="uid://cdqmha6yf8jge" path="res://icon.svg" id="1_d7jxk"]
+[ext_resource type="Script" path="res://Tank2.cs" id="3_5e26a"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -16,3 +17,26 @@ script = ExtResource("1_8j8f5")
 position = Vector2(0, -40)
 scale = Vector2(0.3, 1)
 texture = ExtResource("1_d7jxk")
+
+[node name="tank2" type="Sprite2D" parent="."]
+position = Vector2(655, 189)
+texture = ExtResource("1_d7jxk")
+script = ExtResource("3_5e26a")
+
+[node name="cannon" type="Sprite2D" parent="tank2"]
+
+[node name="CannonTexture" type="Sprite2D" parent="tank2/cannon"]
+
+[node name="tank3" type="Sprite2D" parent="."]
+position = Vector2(655, 189)
+texture = ExtResource("1_d7jxk")
+offset = Vector2(30, 270)
+script = ExtResource("1_8j8f5")
+
+[node name="cannon" type="Sprite2D" parent="tank3"]
+
+[node name="CannonTexture" type="Sprite2D" parent="tank3/cannon"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class TankControls : Sprite2D
+public partial class TankControls : CharacterBody2D
 {
   private int _speed = 400;
   private float _angularSpeed = Mathf.Pi;
@@ -12,53 +12,54 @@ public partial class TankControls : Sprite2D
 
   public override void _Ready()
   {
-    _child = GetNode<Node2D>("cannon");
+	_child = GetNode<Node2D>("cannon");
+	GD.Print("Ready set go");
   }
 
   public override void _Process(double delta)
   {
-    //Rotation -=  _angularSpeed * (float)delta;
-    int currentSpeed = _speed;
-    if (_boosting)
-    {
-      currentSpeed = (int)_boostMultiplier;
-    }
+	//Rotation -=  _angularSpeed * (float)delta;
+	int currentSpeed = _speed;
+	if (_boosting)
+	{
+	  currentSpeed = (int)_boostMultiplier;
+	}
 
-    var velocity = Vector2.Up.Rotated(Rotation) * _speed;
-    //
-    //Position += velocity * (float)delta;
-    var direction = 0;
-    var cannonDirection = 0;
-    if (Input.IsActionPressed("cannonLeft"))
-    {
-      cannonDirection = -1;
-    }
-    if (Input.IsActionPressed("cannonRight"))
-    {
-      cannonDirection = 1;
-    }
-    if (Input.IsActionPressed("ui_left"))
-    {
-      direction = -1;
-    }
-    if (Input.IsActionPressed("ui_right"))
-    {
-      direction = 1;
-    }
-    if (Input.IsActionPressed("ui_up"))
-    {
-      Position += velocity * (float)delta;
-    }
-    if (Input.IsActionPressed("ui_down"))
-    {
-      Position -= velocity * (float)delta;
-    }
-    if (Input.IsActionPressed("ui_select") && !_boosting)
-    {
-      Position += velocity * (float)delta * _boostMultiplier;
-    }
+	var velocity = Vector2.Up.Rotated(Rotation) * _speed;
+	//
+	//Position += velocity * (float)delta;
+	var direction = 0;
+	var cannonDirection = 0;
+	if (Input.IsActionPressed("cannonLeft"))
+	{
+	  cannonDirection = -1;
+	}
+	if (Input.IsActionPressed("cannonRight"))
+	{
+	  cannonDirection = 1;
+	}
+	if (Input.IsActionPressed("ui_left"))
+	{
+	  direction = -1;
+	}
+	if (Input.IsActionPressed("ui_right"))
+	{
+	  direction = 1;
+	}
+	if (Input.IsActionPressed("ui_up"))
+	{
+	  Position += velocity * (float)delta;
+	}
+	if (Input.IsActionPressed("ui_down"))
+	{
+	  Position -= velocity * (float)delta;
+	}
+	if (Input.IsActionPressed("ui_select") && !_boosting)
+	{
+	  Position += velocity * (float)delta * _boostMultiplier;
+	}
 
-    Rotation += _angularSpeed * direction * (float)delta;
-    _child.Rotation += _angularSpeed * cannonDirection * (float)delta;
+	Rotation += _angularSpeed * direction * (float)delta;
+	_child.Rotation += _angularSpeed * cannonDirection * (float)delta;
   }
 }
